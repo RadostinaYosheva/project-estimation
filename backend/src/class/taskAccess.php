@@ -109,6 +109,19 @@ class TaskAccess {
 
         return "Successfully deleted task with id: " . $taskId;
     }
+
+    public function getEstimations() {
+        $sqlQuery = "SELECT story_points FROM " . $this->db_table . " WHERE story_points IS NOT NULL";
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->execute();
+
+        $estimations = array();
+        while ($story_points = $statement->fetch(PDO::FETCH_ASSOC)){
+
+            array_push($estimations, $story_points);
+        }
+        return $estimations;
+    }
 }
 
 ?>
