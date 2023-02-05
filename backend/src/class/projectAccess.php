@@ -61,6 +61,22 @@ class ProjectAccess {
         return $this->getProject($project->id);
     }
 
+    public function updateProject(Project $project) {
+        $sqlQuery = "UPDATE " . $this->db_table . 
+        " SET title = :title, owner = :owner, deadline = :deadline
+        WHERE id = :id";
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":id", $project->id);
+        $statement->bindParam(":title", $project->title);
+        $statement->bindParam(":deadline", $project->deadline);
+        $statement->bindParam(":owner", $project->owner);
+    
+        $statement->execute();
+
+        return $this->getProject($project->id);
+    }
+
     public function exists(string $projectId) {
         $sqlQuery = "SELECT * FROM ". $this->db_table . " WHERE id = :id";
 

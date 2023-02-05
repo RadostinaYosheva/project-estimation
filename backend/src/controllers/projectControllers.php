@@ -43,6 +43,15 @@
 
             echo json_encode($project);
         }
+        else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
+            $body = json_decode(file_get_contents('php://input')); 
+            $id = Project::loadIdFromJson($body);
+            $oldProject = $projectAccess->getProject($id);
+            $newProject = Project::loadPartialProjectFromJson($id, $oldProject, $body);
+            $result = $projectAccess->updateProject($newProject);
+
+            echo json_encode($result);
+        }
     } catch (Exception $e) {
         http_response_code(400);
         $error = new stdClass();
