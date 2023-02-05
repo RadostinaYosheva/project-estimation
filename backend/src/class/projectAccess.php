@@ -42,6 +42,16 @@ class ProjectAccess {
         }
         return $tasks;
     }
+
+    public function exists(string $projectId) {
+        $sqlQuery = "SELECT * FROM ". $this->db_table . " WHERE id = :id";
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":id", $projectId);
+        $statement->execute();
+
+        return $statement->rowCount() > 0;
+    }
 }
 
 ?>

@@ -3,7 +3,7 @@
 include_once 'task.php';
 
 class TaskAccess {
-    private $connection;
+    private $conn;
     private $db_table = "Task";
 
     public function __construct($db) {
@@ -58,6 +58,30 @@ class TaskAccess {
             array_push($tasks, $task);
         }
         return $tasks;
+    }
+
+    public function createTask(Task $task) {
+        $sqlQuery = "INSERT INTO " . $this->db_table . 
+                    "(id, title, project, assignee, description, type, story_points) 
+                    values 
+                    (:id, :title, :project, :assignee, :description, :type, :story_points)";
+
+        $assignee = $task->assignee ?? NULL;
+        $description = $task->description ?? NULL;
+        $story_points = $task->story_points ?? NULL;
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":id", $task->id);
+        $statement->bindParam(":title", $task->title);
+        $statement->bindParam(":project", $task->project);
+        $statement->bindParam(":assignee", $assignee);
+        $statement->bindParam(":description", $description);
+        $statement->bindParam(":type", $task->type);
+        $statement->bindParam(":story_points", $story_points);
+
+        $statement->execute();
+
+        return "Task created successfully!";
     }
 }
 
