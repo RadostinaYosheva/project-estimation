@@ -31,6 +31,18 @@
 
             echo json_encode($result);
         } 
+        else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $body = json_decode(file_get_contents('php://input')); 
+            
+            $projectRaw = Project::loadFromJson($body);
+            $project = $projectAccess->createProject($projectRaw);
+
+            $tasksForProject = $taskAccess->getTasksForProject($projectRaw->id);
+
+            $project->addTasks($tasksForProject);
+
+            echo json_encode($project);
+        }
     } catch (Exception $e) {
         http_response_code(400);
         $error = new stdClass();

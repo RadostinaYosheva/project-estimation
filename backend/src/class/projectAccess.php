@@ -34,13 +34,31 @@ class ProjectAccess {
         $statement->bindParam(":projectId", $projectId);
         $statement->execute();
 
-        $tasks = array();
-        while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
-            $task = Project::loadFromJson((object) $row);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        $project = Project::loadFromJson((object) $row);
+        return $project;
+    }
 
-            array_push($tasks, $task);
-        }
-        return $tasks;
+    public function createProject(Project $project) {
+        $sqlQuery = "INSERT INTO
+                        ". $this->db_table ."
+                    SET
+                        id = :id,
+                        title = :title, 
+                        deadline = :deadline, 
+                        owner = :owner";
+
+        $owner = $project->owner ?? NULL;
+        
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":id", $project->id);
+        $statement->bindParam(":title", $project->title);
+        $statement->bindParam(":deadline", $project->deadline);
+        $statement->bindParam(":owner", $owner);
+    
+        $statement->execute();
+
+        return $this->getProject($project->id);
     }
 
     public function exists(string $projectId) {
