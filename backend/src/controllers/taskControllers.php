@@ -38,6 +38,15 @@
             http_response_code(200); // TODO: Check if this is necessary?
             echo json_encode($taskAccess->createTask($taskRaw));
         }
+        else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
+            $body = json_decode(file_get_contents('php://input')); 
+            $id = Utils::loadIdFromJson($body);
+            $oldTask = $taskAccess->getTask($id);
+            $newTask = Task::loadPartialTaskFromJson($id, $oldTask, $body);
+            $result = $taskAccess->updateTask($newTask);
+
+            echo json_encode($result);
+        }
     } catch (Exception $e) {
         http_response_code(400);
         $error = new stdClass();

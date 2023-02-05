@@ -51,13 +51,10 @@ class TaskAccess {
         $statement->bindParam(":taskId", $taskId);
         $statement->execute();
 
-        $tasks = array();
-        while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
-            $task = Task::loadFromJson((object) $row);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        $task = Task::loadFromJson((object) $row);
 
-            array_push($tasks, $task);
-        }
-        return $tasks;
+        return $task;
     }
 
     public function createTask(Task $task) {
@@ -79,6 +76,25 @@ class TaskAccess {
         $statement->bindParam(":type", $task->type);
         $statement->bindParam(":story_points", $story_points);
 
+        $statement->execute();
+
+        return $this->getTask($task->id);
+    }
+
+    public function updateTask(Task $task) {
+        $sqlQuery = "UPDATE " . $this->db_table . 
+        " SET title = :title, project = :project, assignee = :assignee, description = :description, type = :type, story_points = :story_points
+        WHERE id = :id";
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":id", $task->id);
+        $statement->bindParam(":title", $task->title);
+        $statement->bindParam(":project", $task->project);
+        $statement->bindParam(":assignee", $task->assignee);
+        $statement->bindParam(":description", $task->description);
+        $statement->bindParam(":type", $task->type);
+        $statement->bindParam(":story_points", $task->story_points);
+    
         $statement->execute();
 
         return $this->getTask($task->id);
