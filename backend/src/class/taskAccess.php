@@ -41,6 +41,24 @@ class TaskAccess {
         }
         return $tasks;
     }
+
+    public function getTask(string $taskId) {
+        $sqlQuery = "SELECT id, title, project, assignee, description, type, story_points " .
+                    " FROM " . $this->db_table . 
+                    " WHERE id =  :taskId";
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":taskId", $taskId);
+        $statement->execute();
+
+        $tasks = array();
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
+            $task = Task::loadFromJson((object) $row);
+
+            array_push($tasks, $task);
+        }
+        return $tasks;
+    }
 }
 
 ?>

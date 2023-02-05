@@ -19,9 +19,9 @@
             if ($pathEnd == "taskControllers.php") {
                 $tasks = $taskAccess->getTasks();
             } else {
-                $tasks = $taskAccess->getTasksForProject($pathEnd);
+                $tasks = $taskAccess->getTask($pathEnd);
             }
-            
+
             echo json_encode($tasks);
         } 
     } catch (Exception $e) {
