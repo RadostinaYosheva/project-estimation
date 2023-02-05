@@ -81,7 +81,7 @@ class TaskAccess {
 
         $statement->execute();
 
-        return "Task created successfully!";
+        return $this->getTask($task->id);
     }
 }
 
