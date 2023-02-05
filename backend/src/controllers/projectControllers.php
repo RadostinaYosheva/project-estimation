@@ -52,6 +52,13 @@
 
             echo json_encode($result);
         }
+        else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+            $uriSegments = Utils::getUriSegments();
+            $projectId = end($uriSegments);
+            $resultMessage = $projectAccess->deleteProject($projectId);
+
+            echo json_encode($resultMessage);
+        }
     } catch (Exception $e) {
         http_response_code(400);
         $error = new stdClass();

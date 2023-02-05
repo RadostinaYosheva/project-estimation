@@ -77,6 +77,20 @@ class ProjectAccess {
         return $this->getProject($project->id);
     }
 
+    public function deleteProject(string $projectId) {
+        $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = :projectId";
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":projectId", $projectId);
+        $statement->execute();
+
+        if ($this->exists($projectId) == true) {
+            throw new Exception ("Failed to delete project with id: " . $projectId);
+        }
+
+        return "Successfully deleted project with id: " . $projectId;
+    }
+
     public function exists(string $projectId) {
         $sqlQuery = "SELECT * FROM ". $this->db_table . " WHERE id = :id";
 
