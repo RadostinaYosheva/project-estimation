@@ -99,6 +99,16 @@ class TaskAccess {
 
         return $this->getTask($task->id);
     }
+
+    public function deleteTask(string $taskId) {
+        $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = :taskId";
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":taskId", $taskId);
+        $statement->execute();
+
+        return "Successfully deleted task with id: " . $taskId;
+    }
 }
 
 ?>
