@@ -1,0 +1,28 @@
+[
+    {
+        "id": "task-id",
+        "title": "task-title"
+    },
+    {
+        "id": "task-id",
+        "title": "task-title",
+        "project": "project-id"
+    },
+    {
+        "id": "task-id",
+        "description": "string or null"
+    },
+    {
+        "id": "task-id",
+        "type": "task"
+    },
+    {
+        "id": "task-id",
+        "story_points": 4
+    },
+    {
+        "id": "task-id",
+        "description": "string or null",
+        "story_points": 4
+    }
+]

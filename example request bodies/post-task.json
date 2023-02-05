@@ -1,0 +1,9 @@
+{
+    "id": "task-id",
+    "title": "task-title",
+    "project": "project-id",
+    "assignee": "user or null",
+    "description": "string or null",
+    "type": "task",
+    "story_points": 4
+}
