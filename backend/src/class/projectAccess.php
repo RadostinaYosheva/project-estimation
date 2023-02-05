@@ -24,6 +24,24 @@ class ProjectAccess {
         }
         return $projects;
     }
+
+    public function getProject(string $projectId) {
+        $sqlQuery = "SELECT id, title, owner, deadline" .
+                    " FROM " . $this->db_table . 
+                    " WHERE id =  :projectId";
+
+        $statement = $this->conn->prepare($sqlQuery);
+        $statement->bindParam(":projectId", $projectId);
+        $statement->execute();
+
+        $tasks = array();
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
+            $task = Project::loadFromJson((object) $row);
+
+            array_push($tasks, $task);
+        }
+        return $tasks;
+    }
 }
 
 ?>

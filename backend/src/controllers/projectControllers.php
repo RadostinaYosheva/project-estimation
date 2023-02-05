@@ -6,6 +6,7 @@
     include_once '../class/project.php';
     include_once '../class/projectAccess.php';
     include_once '../class/taskAccess.php';
+    include_once '../utils/utils.php';
 
 
     $database = new Database();
@@ -14,15 +15,22 @@
     $taskAccess = new TaskAccess($db);
 
     try {
-        if($_SERVER["REQUEST_METHOD"] == "GET"){
-            $projects = $projectAccess->getProjects();
-            foreach ($projects as $project) {
-                $tasks = $taskAccess->getTasksForProject($project->id);
-                $project->addTasks($tasks);
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $uriSegments = Utils::getUriSegments();
+            $pathEnd = end($uriSegments);
+
+            if ($pathEnd == "projectControllers.php") {
+                $result = $projectAccess->getProjects();
+                foreach ($projects as $project) {
+                    $tasks = $taskAccess->getTasksForProject($project->id);
+                    $project->addTasks($tasks);
+                }
+            } else {
+                $result = $projectAccess->getProject($pathEnd);
             }
-            
-            echo json_encode($projects);
-        }
+
+            echo json_encode($result);
+        } 
     } catch (Exception $e) {
         http_response_code(400);
         $error = new stdClass();
