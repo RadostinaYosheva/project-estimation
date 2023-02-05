@@ -18,6 +18,8 @@
 
             if ($pathEnd == "taskControllers.php") {
                 $tasks = $taskAccess->getTasks();
+            } else if (in_array("project", $uriSegments)) {
+                $tasks = $taskAccess->getTasksForProject($pathEnd);
             } else {
                 $tasks = $taskAccess->getTask($pathEnd);
             }
