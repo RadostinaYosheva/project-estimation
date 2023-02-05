@@ -45,7 +45,7 @@
         }
         else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
             $body = json_decode(file_get_contents('php://input')); 
-            $id = Project::loadIdFromJson($body);
+            $id = Utils::loadIdFromJson($body);
             $oldProject = $projectAccess->getProject($id);
             $newProject = Project::loadPartialProjectFromJson($id, $oldProject, $body);
             $result = $projectAccess->updateProject($newProject);
