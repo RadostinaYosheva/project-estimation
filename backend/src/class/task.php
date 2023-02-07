@@ -43,7 +43,7 @@ class Task {
         $description = $data->description ?? $oldTask->description;
         $story_points = $data->story_points ?? $oldTask->story_points;
 
-        return new Task($id, $title, $project, $task, $assignee, $description, $story_points);
+        return new Task($id, $title, $project, $type, $assignee, $description, $story_points);
     }
 }
 
