@@ -21,12 +21,14 @@
 
             if ($pathEnd == "projectControllers.php") {
                 $result = $projectAccess->getProjects();
-                foreach ($projects as $project) {
+                foreach ($result as $project) {
                     $tasks = $taskAccess->getTasksForProject($project->id);
                     $project->addTasks($tasks);
                 }
             } else {
                 $result = $projectAccess->getProject($pathEnd);
+                $tasks = $taskAccess->getTasksForProject($result->id);
+                $result->addTasks($tasks);
             }
 
             echo json_encode($result);
