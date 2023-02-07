@@ -38,12 +38,14 @@ insert into Task
     id,
     title,
     project,
-    type
+    type,
+    assignee
 ) values (
     "321",
     "Task 2",
     "1",
-    'task'
+    "task",
+    "@tosho.y"
 );
 
 insert into Task
@@ -59,3 +61,35 @@ insert into Task
     'task'
 );
 
+insert into User
+(
+    id,
+    first_name,
+    last_name
+) values (
+    "@gosho.i",
+    "Gosho",
+    "Ivanov"
+);
+
+insert into User
+(
+    id,
+    first_name,
+    last_name
+) values (
+    "@pesho.p",
+    "Pesho",
+    "Petrov"
+);
+
+insert into User
+(
+    id,
+    first_name,
+    last_name
+) values (
+    "@tosho.y",
+    "Tosho",
+    "Yordanov"
+);
