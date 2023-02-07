@@ -4,7 +4,7 @@ include_once '../class/task.php';
 include_once '../class/project.php';
 
 class ProjectAccess {
-    private $connection;
+    private $conn;
     private $db_table = "Project";
 
     public function __construct($db) {
