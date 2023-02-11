@@ -33,6 +33,51 @@ insert into Task
     'discovery'
 );
 
+insert into User
+(
+    id,
+    first_name,
+    last_name,
+    password,
+    email
+) values (
+    "@gosho.i",
+    "Gosho",
+    "Ivanov",
+    "abcd1234",
+    "gosho.i@mail.com"
+);
+
+insert into User
+(
+    id,
+    first_name,
+    last_name,
+    password,
+    email
+) values (
+    "@pesho.p",
+    "Pesho",
+    "Petrov",
+    "abcd12345",
+    "pesho.p@mail.com"
+);
+
+insert into User
+(
+    id,
+    first_name,
+    last_name,
+    password,
+    email
+) values (
+    "@tosho.y",
+    "Tosho",
+    "Yordanov",
+    "password",
+    "tosho.y@mail.com"
+);
+
 insert into Task
 (
     id,
@@ -59,37 +104,4 @@ insert into Task
     "Task 3",
     "2",
     'task'
-);
-
-insert into User
-(
-    id,
-    first_name,
-    last_name
-) values (
-    "@gosho.i",
-    "Gosho",
-    "Ivanov"
-);
-
-insert into User
-(
-    id,
-    first_name,
-    last_name
-) values (
-    "@pesho.p",
-    "Pesho",
-    "Petrov"
-);
-
-insert into User
-(
-    id,
-    first_name,
-    last_name
-) values (
-    "@tosho.y",
-    "Tosho",
-    "Yordanov"
 );
