@@ -43,12 +43,14 @@ insert into User
     first_name,
     last_name,
     password,
+    role,
     email
 ) values (
     "@gosho.i",
     "Gosho",
     "Ivanov",
     "abcd1234",
+    'Admin',
     "gosho.i@mail.com"
 );
 
@@ -58,12 +60,14 @@ insert into User
     first_name,
     last_name,
     password,
+    role,
     email
 ) values (
     "@pesho.p",
     "Pesho",
     "Petrov",
     "abcd12345",
+    'Developer',
     "pesho.p@mail.com"
 );
 
@@ -73,12 +77,14 @@ insert into User
     first_name,
     last_name,
     password,
+    role,
     email
 ) values (
     "@tosho.y",
     "Tosho",
     "Yordanov",
     "password",
+    'Scrum Master',
     "tosho.y@mail.com"
 );
 

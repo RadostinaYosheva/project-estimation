@@ -4,12 +4,13 @@ DROP TABLE IF EXISTS Task;
 DROP TABLE IF EXISTS Project;
 DROP TABLE IF EXISTS User;
 
--- TODO: Check if everything is ok (names, not null, default, types, foreign keys, etc.)
+
 CREATE TABLE IF NOT EXISTS User (
     id VARCHAR(36) NOT NULL PRIMARY KEY DEFAULT UUID(),
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
+    role ENUM('Admin', 'Developer', 'Product Owner', 'Scrum Master') NOT NULL,
     email VARCHAR(100)
 );
 

@@ -11,7 +11,7 @@ class UserAccess {
     }
 
     public function getUsers() {
-        $sqlQuery = "SELECT id, first_name, last_name, password, email " .
+        $sqlQuery = "SELECT id, first_name, last_name, password, role, email " .
                     "FROM " . $this->db_table . "";
         $statement = $this->conn->prepare($sqlQuery);
         $statement->execute();
@@ -26,7 +26,7 @@ class UserAccess {
     }
 
     public function getUser(string $userId) {
-        $sqlQuery = "SELECT id, first_name, last_name, password, email" .
+        $sqlQuery = "SELECT id, first_name, last_name, password, role, email" .
                     " FROM " . $this->db_table . 
                     " WHERE id =  :userId";
 
@@ -61,6 +61,7 @@ class UserAccess {
                         first_name = :first_name, 
                         last_name = :last_name, 
                         password = :password,
+                        role = :role,
                         email = :email";
 
         $email = $user->email ?? NULL;
@@ -70,6 +71,7 @@ class UserAccess {
         $statement->bindParam(":first_name", $user->first_name);
         $statement->bindParam(":last_name", $user->last_name);
         $statement->bindParam(":password", $user->password);
+        $statement->bindParam(":role", $user->role);
         $statement->bindParam(":email", $email);
     
         $statement->execute();
@@ -84,6 +86,7 @@ class UserAccess {
             first_name = :first_name, 
             last_name = :last_name, 
             password = :password,
+            role = :role,
             email = :email
         WHERE id = :id";
 
@@ -92,6 +95,7 @@ class UserAccess {
         $statement->bindParam(":first_name", $user->first_name);
         $statement->bindParam(":last_name", $user->last_name);
         $statement->bindParam(":password", $user->password);
+        $statement->bindParam(":role", $user->role);
         $statement->bindParam(":email", $user->email);
     
         $statement->execute();
