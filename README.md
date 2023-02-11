@@ -21,7 +21,7 @@ Start your MariaDB server:
 
    Change the default user password:
 
-    › SET PASSWORD FOR 'root'@'localhost' = PASSWORD('mypass');
+    › SET PASSWORD FOR 'root'@'localhost' = PASSWORD('defaultpassword');
     › FLUSH PRIVILEGES;
 
 Go to `the-place-you-saved-the-project/backend/src/inti` and change the `config.ini` file with the new values.
