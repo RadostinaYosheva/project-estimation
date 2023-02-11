@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Create new project</title>
+        
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+        <!--  Font Awesome  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+        <link href = "./css/style.css" rel = "stylesheet">
+        <script src = "./js/loadProjects.js"></script>
+
+    </head>
+    <body onload="addTaskButton()">
+        <nav>
+            <a href = "project-home.html"  title = "Current active projects">Home</a>
+            <a href = "create-project.html" id = "active" title = "Create new project">Create</a>
+        </nav>
+
+        <div class = "row">
+            <div class = "column">
+                <h1>Create new project:</h1>
+    
+                <form class = "add-project">
+                    <label for="number">Project number: </label>
+                    <input type="text" class="box" name="number" placeholder="Project" required>
+                    <label for = "owner"> Lead developer: </label> 
+                    <input type = "text" class = "box" name = "owner" placeholder="Developer" required>
+                    <label for = "deathline">Deathline: </label>
+                    <input type = "date" name = "deathline" class="box" required>
+                    <input type = "button" class = "addTaskBtn" value="Add task">
+                    <input type = "submit" value = "Submit" class = "submitBtn"> 
+                </form>
+    
+                <form class = "add-task" >
+                    <label for="taskId">Task Id: </label>
+                    <input type = "text" class="box" name = "taskId" placeholder="Task" id = "taskId" required>
+                    <label for="taskTitle">Title: </label>
+                    <input type="text" class="box" name="taskTitle" placeholder="Title" id = "taskTitle" required>
+                    <label for="asignee">Asignee: </label>
+                    <input type="text" class="box" name="asignee" placeholder="Developer"id = "asignee" required>
+                    <label for="description">Description: </label>
+                    <input type="text" class = "box" name="description" id = "description" placeholder="Description">
+                    <label for="storyPoints">Story points:</label>
+                    <input type = "text" class="box" name="storyPoints" id = "storyPoints" placeholder="Story points" required>
+                    <input type = "button" class = "submitBtn" value = "Submit" onclick="HideTaskForm()">
+                </form> 
+            </div>
+            <div class = "column">
+                <h1>Tasks: </h1>
+                <table  id = "tasks">
+                    <tr>
+                        <th style = "width:70%">Title</th>
+                        <th>Asignee</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+         
+    </body>
+</html>

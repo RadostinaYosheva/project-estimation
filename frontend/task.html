@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Task</title>
+        <link href = "./css/style.css" rel = "stylesheet">
+        <script src = "./js/loadProjects.js"></script>
+        <script src = "./js/fillTasks.js"></script>
+    </head>
+    <body>
+        <nav>
+            <a href = "project-home.html" id = "active" title = "Current active projects">Home</a>
+            <a href = "create-project.html" title = "Create new project">Create</a>
+        </nav>
+
+        <h1 id = "task-title"></h1>
+        <p>Asignee: 
+        <span id = "task-asignee"></span></p>
+        <p>Project: 
+        <span id = "task-project"></span></p>
+        <p>Story Points: 
+        <span id = "task-storyPoints"></span></p>
+        <p>Description: 
+            <span id = "task-description"></span>
+        </p>
+        <button onclick = "estimate()" class = "estimateBtn">Estimate</button>
+    </body>
+</html>

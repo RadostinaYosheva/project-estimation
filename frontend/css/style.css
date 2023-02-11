@@ -1,0 +1,181 @@
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+nav a 
+    {text-decoration: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    top: 0;
+    padding: 14px 14px 14px 14px;
+    color: black
+    }
+
+nav
+{
+    width:100%;
+    /*position: fixed;*/
+    z-index: 1000;
+    padding: 1.2rem 5%;
+    margin-top: 20px;
+    margin-left: 20px;
+    /*box-shadow: 0px 0px  rgb(199, 194, 194);*/
+    box-shadow:0 .5rem 1.5rem rgba(192,192,192,0.3);
+}
+
+nav a:hover
+{
+    background-color: rgb(199, 194, 194);
+    border-radius: 0.3rem;
+    text-decoration: none;
+}
+
+table
+{
+    margin-left: 130px;
+    margin-top: 40px;
+    width: 70%;
+    border-bottom: 1px;
+}
+
+h1
+{
+    font-weight: normal;
+    margin-left: 90px;
+    margin-top: 50px;
+}
+
+td, th
+{
+    text-align: left;
+    height: 45px;
+    vertical-align: bottom;
+    border-bottom: 1px solid #ddd;
+}
+
+form
+{
+    margin-left: 130px;
+}
+
+.add-project {
+	width: 25rem;
+	border-radius: .3rem;
+	background: #fff;
+	text-align: center;
+}
+
+.add-project label {
+    color: #adb5bd;
+	font-size: 1.5rem;
+	float: left;
+	margin-top: 0.5rem;
+}
+
+.add-project .box {
+	background: #f8f7ff;
+	border-radius: .3rem;
+	padding: 1rem;
+	font-size: 1rem;
+	text-transform: none;
+	width: 25rem;
+    color: #293241;
+    border-style: none;
+}
+
+.addTaskBtn {
+	margin-top: 1rem;
+	display: inline-block;
+	padding: .8rem 3rem;
+	font-size: 1.5rem;
+	border-radius: .3rem;
+	border: .2rem solid #293241;
+	color: #293241;
+	cursor: pointer;
+	background: none;
+}
+
+.submitBtn {
+    margin-top: 1rem;
+	display: inline-block;
+	padding: .8rem 3rem;
+	font-size: 1.5rem;
+	border-radius: .3rem;
+	border: .2rem solid #293241;
+	color: #293241;
+	cursor: pointer;
+	background: none;
+}
+
+
+.add-task {
+	width: 25rem;
+    margin-top: 5rem;
+	border-radius: .3rem;
+	background: #fff;
+	text-align: center;
+}
+
+.add-task label {
+    color: #adb5bd;
+	font-size: 1.5rem;
+	float: left;
+	margin-top: 0.5rem;
+}
+
+.add-task .box {
+	background: #f8f7ff;
+	border-radius: .3rem;
+	padding: 1rem;
+	font-size: 1rem;
+	text-transform: none;
+	width: 25rem;
+    color: #293241;
+    border-style: none;
+}
+
+.row
+{
+    display: flex;
+}
+.column {
+    flex: 50%;
+  }
+
+p {
+    margin-left: 120px;
+    margin-top: 0.1rem;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+a:visited{
+    text-decoration: none;
+}
+
+.estimateBtn{
+    margin-top: 1rem;
+    float: right;
+    margin-right: 7rem;
+	padding: .8rem 3rem;
+	font-size: 1rem;
+	border-radius: .3rem;
+	border: .2rem solid #293241;
+	color: #293241;
+	cursor: pointer;
+	background: none; 
+}
+
+
+
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+
+
