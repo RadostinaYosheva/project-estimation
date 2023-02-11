@@ -12,38 +12,38 @@ This is the final project for the FMI course Web technologies.
 Open your terminal.
 Start your MariaDB server:
 
-    › mysql.server start
-    › mysql
+    mysql.server start
+    mysql
 
    In the MariaDB shell create the database that we are going to use:
 
-    › create database estimation;
+    create database estimation;
 
    Change the default user password:
 
-    › SET PASSWORD FOR 'root'@'localhost' = PASSWORD('defaultpassword');
-    › FLUSH PRIVILEGES;
+    SET PASSWORD FOR 'root'@'localhost' = PASSWORD('defaultpassword');
+    FLUSH PRIVILEGES;
 
 Go to `the-place-you-saved-the-project/backend/src/inti` and change the `config.ini` file with the new values.
 Exit the shell (Cntr + C).
 Navigate to `the-place-you-saved-the-project/backend/src/db`:
 
-    › cd the-place-you-saved-the-project/backend/src/db
+    cd the-place-you-saved-the-project/backend/src/db
 
 Start your server again:
 
-    › mysql
+    mysql
 
 Run the scripts to create and populate the tables:
 
-    › source createDBs.sql
-    › source insert.sql
+    source createDBs.sql
+    source insert.sql
 
 You can verify if the data is inserted correctly:
 
-    › show tables;
-    › select * from Project;
-    › select * from Task;
+    show tables;
+    select * from Project;
+    select * from Task;
 and others.
 
 
@@ -52,11 +52,11 @@ and others.
 Open another terminal.
 Navigate to the backend dir:
 
-    › cd the-place-you-saved-the-project/backend
+    cd the-place-you-saved-the-project/backend
 
 Start the server for `localhost` on port `8080` :
 
-    › php -S 127.0.0.1:8080
+    php -S 127.0.0.1:8080
 
 ## HTTP request in API platform
 
