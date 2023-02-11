@@ -2,22 +2,26 @@ insert into Project
 (
     id, 
     title, 
-    deadline
+    deadline,
+    status
 ) values (
     "1", 
     "Test Project 1", 
-    NOW()
+    NOW(),
+    'New'
 );
 
 insert into Project 
 (
     id, 
     title, 
-    deadline
+    deadline,
+    status
 ) values (
     "2", 
     "Test Project 2", 
-    NOW()
+    NOW(),
+    'In Progress'
 );
 
 insert into Task
@@ -30,7 +34,7 @@ insert into Task
     "123",
     "Task 1",
     "1",
-    'discovery'
+    'Discovery'
 );
 
 insert into User
@@ -89,7 +93,7 @@ insert into Task
     "321",
     "Task 2",
     "1",
-    "task",
+    "Task",
     "@tosho.y"
 );
 
@@ -103,5 +107,5 @@ insert into Task
     "456",
     "Task 3",
     "2",
-    'task'
+    'Task'
 );

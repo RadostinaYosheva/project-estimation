@@ -12,7 +12,7 @@ class ProjectAccess {
     }
 
     public function getProjects() {
-        $sqlQuery = "SELECT id, title, owner, deadline FROM " . $this->db_table . "";
+        $sqlQuery = "SELECT id, title, status, owner, deadline FROM " . $this->db_table . "";
         $statement = $this->conn->prepare($sqlQuery);
         $statement->execute();
 
@@ -26,7 +26,7 @@ class ProjectAccess {
     }
 
     public function getProject(string $projectId) {
-        $sqlQuery = "SELECT id, title, owner, deadline" .
+        $sqlQuery = "SELECT id, title, status, owner, deadline" .
                     " FROM " . $this->db_table . 
                     " WHERE id =  :projectId";
 
@@ -45,6 +45,7 @@ class ProjectAccess {
                     SET
                         id = :id,
                         title = :title, 
+                        status = :status,
                         deadline = :deadline, 
                         owner = :owner";
 
@@ -53,6 +54,7 @@ class ProjectAccess {
         $statement = $this->conn->prepare($sqlQuery);
         $statement->bindParam(":id", $project->id);
         $statement->bindParam(":title", $project->title);
+        $statement->bindParam(":status", $project->status);
         $statement->bindParam(":deadline", $project->deadline);
         $statement->bindParam(":owner", $owner);
     
@@ -63,12 +65,13 @@ class ProjectAccess {
 
     public function updateProject(Project $project) {
         $sqlQuery = "UPDATE " . $this->db_table . 
-        " SET title = :title, owner = :owner, deadline = :deadline
+        " SET title = :title, status = :status, owner = :owner, deadline = :deadline
         WHERE id = :id";
 
         $statement = $this->conn->prepare($sqlQuery);
         $statement->bindParam(":id", $project->id);
         $statement->bindParam(":title", $project->title);
+        $statement->bindParam(":status", $project->status);
         $statement->bindParam(":deadline", $project->deadline);
         $statement->bindParam(":owner", $project->owner);
     

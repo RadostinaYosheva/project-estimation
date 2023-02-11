@@ -16,8 +16,9 @@ CREATE TABLE IF NOT EXISTS User (
 CREATE TABLE Project (
     id VARCHAR(36) NOT NULL PRIMARY KEY DEFAULT UUID(),
     title VARCHAR(100) NOT NULL,
+    status ENUM('New', 'In Progress', 'Done'),
     owner VARCHAR(200),
-    deadline DATETIME NOT NULL,
+    deadline DATETIME,
     FOREIGN KEY (owner) REFERENCES User(id)
 );
 
@@ -27,7 +28,7 @@ CREATE TABLE Task (
     project VARCHAR(36) NOT NULL,
     assignee VARCHAR(200),
     description VARCHAR(500),
-    type ENUM('epic', 'task', 'bug', 'discovery') NOT NULL,
+    type ENUM('Epic', 'Task', 'Bug', 'Discovery') NOT NULL,
     story_points INTEGER,
     FOREIGN KEY (assignee) REFERENCES User(id),
     FOREIGN KEY (project) REFERENCES Project(id)
