@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
         <link href = "./css/style.css" rel = "stylesheet">
-        <script src = "./js/loadProjects.js"></script>
+        
 
     </head>
     <body onload="addTaskButton()">
@@ -23,13 +23,16 @@
             <div class = "column">
                 <h1>Create new project:</h1>
     
-                <form class = "add-project">
-                    <label for="number">Project number: </label>
-                    <input type="text" class="box" name="number" placeholder="Project" required>
+                <!-- TODO: maybe add method="post" -->
+                <form class = "add-project" id = "add-project">
+                    <label for="id">Project id: </label>
+                    <input type="text" class="box" name="id" placeholder="ID" required>
+                    <label for="title">Project title: </label>
+                    <input type="text" class="box" name="title" placeholder="Project" required>
                     <label for = "owner"> Lead developer: </label> 
                     <input type = "text" class = "box" name = "owner" placeholder="Developer" required>
-                    <label for = "deathline">Deathline: </label>
-                    <input type = "date" name = "deathline" class="box" required>
+                    <label for = "deadline">Deadline: </label>
+                    <input type = "date" name = "deadline" class="box" required>
                     <input type = "button" class = "addTaskBtn" value="Add task">
                     <input type = "submit" value = "Submit" class = "submitBtn"> 
                 </form>
@@ -58,6 +61,8 @@
                 </table>
             </div>
         </div>
-         
+        <script src="./js/config.js"></script>
+        <script src = "./js/loadProjects.js"></script>
+        
     </body>
 </html>

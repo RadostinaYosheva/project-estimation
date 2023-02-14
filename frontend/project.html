@@ -8,7 +8,7 @@
         
     </head>
     <body>
-        <nav>
+        <nav class = "navbar">
             <a href = "project-home.html">Home</a>
             <a href = "create-project.html">Create</a>
         </nav>
@@ -25,7 +25,13 @@
                     <th>Asignee</th>
                 </tr>
             </table>
+            <button class = "box" onclick = "deleteProject()">Delete</button>
+            <button class = "box" onclick = "editProject()">Edit</button>
+            <button class = "box" onclick = "importData()">Import</button>
+            <button onclick = "exportData()">Export</button>
         </div>
-        <script src = "./js/projectsAndTasks.js"></script>
+        <script src="./js/config.js"></script>
+         <script src = "./js/projectsAndTasks.js"></script>
+       
     </body>
 </html>

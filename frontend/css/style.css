@@ -173,6 +173,50 @@ a:visited{
 	background: none; 
 }
 
+ .login-form {
+	position: absolute;
+	top: 112%;
+	right: -112%;
+	width: 30rem;
+	box-shadow: var(--box-shadow);
+	padding: 1.7rem;
+	border-radius: .3rem;
+	background: #fff;
+	text-align: center;
+}
+ .login-form.active {
+	right: 2rem;
+	transition: .2s linear;
+}
+
+ .login-form h3 {
+	font-size: 2.5rem;
+	text-transform: uppercase;
+	color: var(--dark);
+}
+
+ .login-form .box {
+	margin: .7rem 0;
+	background: #f8f7ff;
+	border-radius: .3rem;
+	padding: 1rem;
+	font-size: 1.5rem;
+	color: var(--dark);
+	text-transform: none;
+	width: 25rem;
+}
+
+ .login-form p {
+	font-size: 1.4rem;
+	padding: .5rem 0;
+	color: var(--light);
+}
+
+ .login-form p a {
+	color: var(--purple);
+	text-decoration: underline;
+}
+
 
 
 
