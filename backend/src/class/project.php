@@ -22,7 +22,7 @@ class Project {
     }
 
     public static function loadFromJson($data){
-        if(isset($data->id) && isset($data->title)) {
+        if(isset($data->title)) {
             $id = $data->id;
             $title = $data->title;
             $status = $data->status ?? 'New';
