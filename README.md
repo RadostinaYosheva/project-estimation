@@ -24,8 +24,8 @@ Start your MariaDB server:
     SET PASSWORD FOR 'root'@'localhost' = PASSWORD('defaultpassword');
     FLUSH PRIVILEGES;
 
-Go to `the-place-you-saved-the-project/backend/src/inti` and change the `config.ini` file with the new values.
-Exit the shell (Cntr + C).
+Go to `the-place-you-saved-the-project/backend/src/init` and change the `config.ini` file with the new values.
+Exit the shell (`exit`).
 Navigate to `the-place-you-saved-the-project/backend/src/db`:
 
     cd the-place-you-saved-the-project/backend/src/db
