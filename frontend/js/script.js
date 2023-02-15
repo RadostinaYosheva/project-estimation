@@ -17,9 +17,11 @@ async function getapi(url){
         a.href = `project.html?${data[row]['id']}`;
         tCell1.appendChild(a);
         var tCell2 = tRow.insertCell(1);
+        var tCell3 = tRow.insertCell(2);
 
         /*tCell1.innerHTML = data[row]['title'];*/
         tCell2.innerHTML = data[row]['owner'];
+        tCell3.innerHTML = data[row]['status'];
     }
 }
 

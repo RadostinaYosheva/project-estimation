@@ -1,45 +1,34 @@
-let loginFrom = document.querySelector('.login-form');
+var url = "http://127.0.0.1:8080/src/controllers/"
+let currentURL = document.URL
+let project_id = currentURL.split('?')[1].split('&')[0]
+let task_id = currentURL.split('?')[1].split('&')[0]
 
-document.querySelector('#btn-login').onclick = () => {
-	loginFrom.classList.toggle('active');
-	navbar.classList.remove('active');
+async function verifyFormDataAsJson({url, formData})
+{
+    
 }
 
-let navbar = document.querySelector('.navbar');
+async function verifyUser(event)
+{
+    event.preventDefault();
 
-document.querySelector('#btn-menu').onclick = () => {
-	navbar.classList.toggle('active');
-	loginFrom.classList.remove('active');
+    const form = event.currentTarget;
+    const url = form.action;
+
+    try
+    {
+        const formData = new FormData(form);
+        const responseData = await verifyFormDataAsJson({url, formData});
+
+        alert("Successfully created new project!");
+        console.log({responseData});
+    }
+    catch(error)
+    {
+        alert(error);
+        console.error(error);
+    }
 }
 
-let login_button = document.getElementById('btn-login');
-
-document.querySelector('#login-button').onclick = () => {
-	loginFrom.classList.remove('active');
-	login_button.style.display = "none";
-}
-
-window.onscroll = () => {
-	loginFrom.classList.remove('active');
-	navbar.classList.remove('active');
-}
-
-var swiper = new Swiper(".event-slide", {
-	loop: true,
-	spaceBetween: 20,
-	autoplay: {
-		delay: 7500,
-		disableOnInteraction: false,
-	},
-	breakpoints: {
-		0: {
-			slidesPerView: 1,
-		},
-		768: {
-			slidesPerView: 2,
-		},
-		1020: {
-			slidesPerView: 3,
-		},
-	},
-});
+const loginForm = document.getElementById("login-form");
+loginForm.addEventListener("submit", verifyUser);

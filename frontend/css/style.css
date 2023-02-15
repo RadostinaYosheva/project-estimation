@@ -14,12 +14,10 @@ nav a
 
 nav
 {
-    width:100%;
-    /*position: fixed;*/
-    z-index: 1000;
+    width:90%;
     padding: 1.2rem 5%;
     margin-top: 20px;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     /*box-shadow: 0px 0px  rgb(199, 194, 194);*/
     box-shadow:0 .5rem 1.5rem rgba(192,192,192,0.3);
 }
@@ -29,6 +27,13 @@ nav a:hover
     background-color: rgb(199, 194, 194);
     border-radius: 0.3rem;
     text-decoration: none;
+}
+
+.login-btn
+{
+	width:6%;
+	margin-top:-14px;
+	float: right;
 }
 
 table
@@ -135,6 +140,17 @@ form
     border-style: none;
 }
 
+.editProject {
+	margin-top:5%;
+	margin-left: auto;
+	text-align: left;
+	background: #fff;
+}
+
+.editProject .editProjectInput:focus{
+	outline: none;
+}
+
 .row
 {
     display: flex;
@@ -173,26 +189,45 @@ a:visited{
 	background: none; 
 }
 
+.editBtn{
+	float:right;
+    margin-top: 15%;
+	margin-right: 5%;	
+	padding: .8rem 3rem;
+	font-size: 1rem;
+	border-radius: .3rem;
+	border: .2rem solid #293241;
+	color: #293241;
+	cursor: pointer;
+	background: none; 
+}
+
+.login-form .loginBtn{
+    margin-top: 1rem;	
+	padding: .8rem 3rem;
+	font-size: 1rem;
+	border-radius: .3rem;
+	border: .2rem solid #293241;
+	color: #293241;
+	cursor: pointer;
+	background: none; 
+}
+
+
+
  .login-form {
-	position: absolute;
-	top: 112%;
-	right: -112%;
 	width: 30rem;
-	box-shadow: var(--box-shadow);
-	padding: 1.7rem;
+	margin: 6% 10% 6% 30%;
+	text-align: center;
+	display:inline-block;
 	border-radius: .3rem;
 	background: #fff;
 	text-align: center;
-}
- .login-form.active {
-	right: 2rem;
-	transition: .2s linear;
 }
 
  .login-form h3 {
 	font-size: 2.5rem;
 	text-transform: uppercase;
-	color: var(--dark);
 }
 
  .login-form .box {
@@ -201,20 +236,41 @@ a:visited{
 	border-radius: .3rem;
 	padding: 1rem;
 	font-size: 1.5rem;
-	color: var(--dark);
 	text-transform: none;
 	width: 25rem;
 }
 
  .login-form p {
 	font-size: 1.4rem;
-	padding: .5rem 0;
-	color: var(--light);
+	margin-left: -2%;
 }
 
  .login-form p a {
-	color: var(--purple);
 	text-decoration: underline;
+}
+
+.exportBtn{
+	float:right;
+    margin-top: 15%;
+	margin-right: 5%;	
+	padding: .8rem 3rem;
+	font-size: 1rem;
+	border-radius: .3rem;
+	border: .2rem solid #293241;
+	color: #293241;
+	cursor: pointer;
+	background: none; 
+}
+
+.importTasks{
+	width: 20rem;
+	margin: 20% 1% 0% 40%;
+	display:inline-block;
+	background: #fff;
+}
+
+.importTasks p{
+	margin-left: -10%;
 }
 
 

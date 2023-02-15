@@ -2,43 +2,97 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-        <title>Оценяване на сложност на проект</title>
+        <title>Home</title>
 
         <link href = "./css/style.css" rel = "stylesheet">
         <script src = "./js/loadProjects.js"></script>
         <script src="./js/script.js"></script>
-        <!--<script src = "./js/loginForm.js"></script>-->
+        <script src = "./js/loginForm.js"></script>
     </head>
     <body>
-        <header>
         <nav>
             <a href = "project-home.html" id = "active" title = "Current active projects">Home</a>
             <a href = "create-project.html" title = "Create new project">Create</a>
-            <!--<button id = "btn-login">Login</button>-->
+            <a href = "login.html" title = "Log in" class = "login-btn">LOG IN</a>
         </nav>
-
-        <form class="login-form" id="login-form">
-            <h3>Login</h3>
-            <input type="text" name="username" placeholder="username" class="box" id="username">
-            <input type="password" name="password" placeholder="password" class="box" id="password">
-            <p><a href="#">Forgotten password</a></p>
-            <p>Don't have an account? <a href="#">Create one</a></p>
-            <button type="submit" class="btn" id="login-button">Login</button>
-          </form>
-        </header>
 
         <h1>Current active projects:</h1>
         <div id = "allProjects">
             <table id="all-projects-table">
                 <tr>
-                    <th style = "width: 70%;">Title</th>
+                    <th style = "width: 60%;">Title</th>
                     <th>Lead Developer</th>
+                    <th>Status</th>
                 </tr>
-                
-                </tr>
+                    
             </table>
         </div>
-        <script src="./js/config.js"></script>
+        <button class = "exportBtn" onclick="tableToCSV()">Export</button>
+
+        <script type="text/javascript">
+            function tableToCSV() {
+     
+                // Variable to store the final csv data
+                var csv_data = [];
+     
+                // Get each row data
+                var rows = document.getElementsByTagName('tr');
+                for (var i = 0; i < rows.length; i++) {
+     
+                    // Get each column data
+                    var cols = rows[i].querySelectorAll('td,th');
+     
+                    // Stores each csv row data
+                    var csvrow = [];
+                    for (var j = 0; j < cols.length; j++) {
+     
+                        // Get the text data of each cell
+                        // of a row and push it to csvrow
+                        csvrow.push(cols[j].innerHTML);
+                    }
+     
+                    // Combine each column value with comma
+                    csv_data.push(csvrow.join(","));
+                }
+     
+                // Combine each row data with new line character
+                csv_data = csv_data.join('\n');
+     
+                // Call this function to download csv file 
+                downloadCSVFile(csv_data);
+     
+            }
+     
+            function downloadCSVFile(csv_data) {
+     
+                // Create CSV file object and feed
+                // our csv_data into it
+                CSVFile = new Blob([csv_data], {
+                    type: "text/csv"
+                });
+     
+                // Create to temporary link to initiate
+                // download process
+                var temp_link = document.createElement('a');
+     
+                // Download csv file
+                temp_link.download = "Projects.csv";
+                var url = window.URL.createObjectURL(CSVFile);
+                temp_link.href = url;
+     
+                // This link should not be displayed
+                temp_link.style.display = "none";
+                document.body.appendChild(temp_link);
+     
+                // Automatically click the link to
+                // trigger download
+                temp_link.click();
+                document.body.removeChild(temp_link);
+            }
+        </script>
+
     </body>
 </html>

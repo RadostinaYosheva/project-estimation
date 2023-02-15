@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <title>Оценяване на сложност на проект</title>
+
+        <link href = "./css/style.css" rel = "stylesheet">
+        <script>
+            function login()
+            {
+                var myWindow = window.open("project-home.html");
+            }
+        </script>
+    </head>
+    <body>
+        <form class="login-form" id="login-form" onsubmit="login()">
+            <h3>Login</h3>
+            <input type="text" name="username" placeholder="username" class="box" id="username">
+            <input type="password" name="password" placeholder="password" class="box" id="password">
+            <p>Don't have an account? <a href="#">Create one</a></p>
+            <button type="submit" class="loginBtn" id="login-button">Login</button>
+        </form>
+    </body>
+</html>

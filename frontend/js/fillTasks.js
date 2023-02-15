@@ -15,6 +15,7 @@ async function getTask(url)
     document.getElementById("task-asignee").innerHTML = data['assignee'];
     document.getElementById("task-project").innerHTML = data['project'];
     document.getElementById("task-storyPoints").innerHTML = data['story_points'];
+    document.getElementById("task-type").innerHTML = data['type'];
     document.getElementById("task-description").innerHTML = data['description'];
 }
 

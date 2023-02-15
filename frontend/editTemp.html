@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project</title>
+
+        <link href = "./css/style.css" rel = "stylesheet">
+        
+    </head>
+    <body>
+        <nav class = "navbar">
+            <a href = "project-home.html">Home</a>
+            <a href = "create-project.html">Create</a>
+        </nav>
+            <form class = "editProject" id="editProject" method="put">
+                <h1>
+                <input type="text" name="title" class = "editProjectInput" id = "id1" value = "Title" ></h1>
+                <p><label for = "owner"> Owner: </label> 
+                <input type = "text" name = "owner" class = "editProjectInput" value="Developer"></p>
+                <p><label for = "deadline">Deadline: </label>
+                <input type = "date" name = "deadline" class = "editProjectInput"></p>
+                <p><label for="status">Status: </label>
+                <input type = "text" name = "status" class = "editProjectInput" value="Status"></p>
+                <button type = "submit" class = "editBtn">Submit</button>
+            </form>
+            
+       <script src = "./js/updateProject.js"></script>
+    </body>
+</html>

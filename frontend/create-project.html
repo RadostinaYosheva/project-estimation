@@ -24,7 +24,7 @@
                 <h1>Create new project:</h1>
     
                 <!-- TODO: maybe add method="post" -->
-                <form class = "add-project" id = "add-project">
+                <form class = "add-project" id = "add-project" method="post">
                     <label for="id">Project id: </label>
                     <input type="text" class="box" name="id" placeholder="ID" required>
                     <label for="title">Project title: </label>
@@ -50,6 +50,7 @@
                     <input type = "text" class="box" name="storyPoints" id = "storyPoints" placeholder="Story points" required>
                     <input type = "button" class = "submitBtn" value = "Submit" onclick="HideTaskForm()">
                 </form> 
+                
             </div>
             <div class = "column">
                 <h1>Tasks: </h1>
@@ -59,10 +60,101 @@
                         <th>Asignee</th>
                     </tr>
                 </table>
+                <div class = "importTasks">
+                    <p><label for="importFrom">Import tasks from csv</label></p>
+                    <input type = "file" name = "importFrom" id="file_upload" accept=".csv">
+                    <button onclick = "upload()">Upload</button>
+                </div>
             </div>
         </div>
         <script src="./js/config.js"></script>
+        <script src = "./js/createProject.js"></script>
         <script src = "./js/loadProjects.js"></script>
         
+        <script>
+            
+      // Method to upload a valid csv file
+      function upload() {
+        var files = document.getElementById('file_upload').files;
+        if(files.length==0){
+          alert("Please choose any file...");
+          return;
+        }
+        var filename = files[0].name;
+        var extension = filename.substring(filename.lastIndexOf(".")).toUpperCase();
+        if (extension == '.CSV') {
+            //Here calling another method to read CSV file into json
+            csvFileToJSON(files[0]);
+        }else{
+            alert("Please select a valid csv file.");
+        }
+      }
+       
+      //Method to read csv file and convert it into JSON 
+      function csvFileToJSON(file){
+          try {
+            var reader = new FileReader();
+            reader.readAsBinaryString(file);
+            reader.onload = function(e) {
+                var jsonData = [];
+                var headers = [];
+                var rows = e.target.result.split("\r\n");               
+                for (var i = 0; i < rows.length - 1; i++) {
+                    var cells = rows[i].split(",");
+                    var rowData = {};
+                    for(var j=0;j<cells.length;j++){
+                        if(i==0){
+                            var headerName = cells[j].trim();
+                            headers.push(headerName);
+                        }else{
+                            var key = headers[j];
+                            if(key){
+                                rowData[key] = cells[j].trim();
+                            }
+                        }
+                    }
+                     
+                    if(i!=0){
+                        jsonData.push(rowData);
+                    }
+                }
+                  
+                //displaying the json result into HTML table
+                displayJsonToHtmlTable(jsonData);
+                }
+            }catch(e){
+                console.error(e);
+            }
+      }
+       
+      //Method to display the data in HTML Table
+      function displayJsonToHtmlTable(jsonData){
+        var table=document.getElementById("tasks");
+        if(jsonData.length>0){
+            var headers = Object.keys(jsonData[0]);
+            var htmlHeader='<thead><tr>';
+             
+            for(var i=0;i<headers.length;i++){
+                htmlHeader+= '<th>'+headers[i]+'</th>';
+            }
+            htmlHeader+= '<tr></thead>';
+             
+            var htmlBody = '<tbody>';
+            for(var i=0;i<jsonData.length;i++){
+                var row=jsonData[i];
+                htmlBody+='<tr>';
+                for(var j=0;j<headers.length;j++){
+                    var key = headers[j];
+                    htmlBody+='<td>'+row[key]+'</td>';
+                }
+                htmlBody+='</tr>';
+            }
+            htmlBody+='</tbody>';
+            table.innerHTML=htmlHeader+htmlBody;
+        }else{
+            table.innerHTML='There is no data in CSV';
+        }
+      }
+        </script>
     </body>
 </html>
