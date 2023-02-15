@@ -1,19 +1,23 @@
-async function postFormDataAsJson({ url, formData }) {
-	console.log(url); // undefined
-	const plainFormData = Object.fromEntries(formData.entries());
-    
-	const formDataJsonString = JSON.stringify(plainFormData);
-    console.log(formDataJsonString);
-	
+let currURL = document.URL
+let pr_id = currURL.split('?')[1].split('&')[0]
 
-	const fetchOptions = {
-		method: "PUT",
-		body: formDataJsonString,
-	};
+async function putFormDataAsJson({ url, formData }) {
+plainData = Object.fromEntries(formData.entries());
+  const dataJsonString = JSON.stringify(plainData);
+  console.log(dataJsonString);
+  const new_obj = JSON.parse(dataJsonString)
+  const JsonToPost = JSON.stringify(new_obj)
+  console.log(JsonToPost)
 
-	const response = await fetch(url, fetchOptions);
+  const postMethod = {
+    method: "POST",
+    body: JsonToPost
+  };
 
-	return response.json();
+  const response = await fetch(url, postMethod);
+
+
+  return response.json();
 }
 /**
  * Event handler for a form submit event.
@@ -34,9 +38,8 @@ async function handleCreateProject(event)
 
 	try {
 		const formData = new FormData(form);
-		console.log(urlTask); // http://127.0.0.1:8080/src/controllers/projectControllers.php/2
-        const responseData = await postFormDataAsJson({ urlTask, formData });
-		console.log(urlTask); // undefined
+		console.log(urlTask);
+        const responseData = await putFormDataAsJson({ url: urlTask, formData });
 
 		alert("Successfully edited project!");
 		window.open("project.html?" + responseData.id, "_self");

@@ -34,27 +34,29 @@
             echo json_encode($result);
         } 
         else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $body = json_decode(file_get_contents('php://input')); 
-            
-            $projectRaw = Project::loadFromJson($body);
-            $project = $projectAccess->createProject($projectRaw);
-
-            $tasksForProject = $taskAccess->getTasksForProject($projectRaw->id);
-
-            $project->addTasks($tasksForProject);
-
-            echo json_encode($project);
-        }
-        else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
             $uriSegments = Utils::getUriSegments();
             $pathEnd = end($uriSegments);
 
-            $body = json_decode(file_get_contents('php://input')); 
-            $oldProject = $projectAccess->getProject($pathEnd);
-            $newProject = Project::loadPartialProjectFromJson($pathEnd, $oldProject, $body);
-            $result = $projectAccess->updateProject($newProject);
+            if ($pathEnd == "projectControllers.php") {
+                $body = json_decode(file_get_contents('php://input')); 
+            
+                $projectRaw = Project::loadFromJson($body);
+                $result = $projectAccess->createProject($projectRaw);
 
-            echo json_encode($result);
+                $tasksForProject = $taskAccess->getTasksForProject($projectRaw->id);
+
+                $result->addTasks($tasksForProject);
+
+                echo json_encode($result);
+
+            } else {
+                $body = json_decode(file_get_contents('php://input')); 
+                $oldProject = $projectAccess->getProject($pathEnd);
+                $newProject = Project::loadPartialProjectFromJson($pathEnd, $oldProject, $body);
+                $result = $projectAccess->updateProject($newProject);
+
+                echo json_encode($result);
+            }
         }
         else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
             $uriSegments = Utils::getUriSegments();
