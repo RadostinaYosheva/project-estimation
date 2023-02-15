@@ -36,7 +36,7 @@ Start your server again:
 
 Run the scripts to create and populate the tables:
 
-    source createDBs.sql
+    source create.sql
     source insert.sql
 
 You can verify if the data is inserted correctly:
