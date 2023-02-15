@@ -28,12 +28,23 @@
             echo json_encode($users);
         } 
         else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $body = json_decode(file_get_contents('php://input')); 
-            
-            $userRaw = User::loadFromJson($body);
-            $user = $userAccess->createUser($userRaw);
+            $uriSegments = Utils::getUriSegments();
+            $pathEnd = end($uriSegments);
 
-            echo json_encode($user);
+            if ($pathEnd == "userControllers.php") {
+                $body = json_decode(file_get_contents('php://input')); 
+                
+                $userRaw = User::loadFromJson($body);
+                $user = $userAccess->createUser($userRaw);
+
+                echo json_encode($user);
+            } else {
+                $fileName = json_decode(file_get_contents('php://input'));
+
+                $users = $userAccess->createUsersFromImport($fileName);
+
+                echo json_encode($users);
+            }
         }
         else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
             $body = json_decode(file_get_contents('php://input')); 
