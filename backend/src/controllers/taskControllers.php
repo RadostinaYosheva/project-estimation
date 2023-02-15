@@ -35,7 +35,7 @@
             if ($projectAccess->exists($taskRaw->project) == false) {
                 throw new Exception('Project with id ' . $project . 'does not exist.');
             }
-            http_response_code(200); // TODO: Check if this is necessary?
+            http_response_code(200);
             echo json_encode($taskAccess->createTask($taskRaw));
         }
         else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
