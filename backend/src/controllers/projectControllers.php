@@ -46,10 +46,12 @@
             echo json_encode($project);
         }
         else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
+            $uriSegments = Utils::getUriSegments();
+            $pathEnd = end($uriSegments);
+
             $body = json_decode(file_get_contents('php://input')); 
-            $id = Utils::loadIdFromJson($body);
-            $oldProject = $projectAccess->getProject($id);
-            $newProject = Project::loadPartialProjectFromJson($id, $oldProject, $body);
+            $oldProject = $projectAccess->getProject($pathEnd);
+            $newProject = Project::loadPartialProjectFromJson($pathEnd, $oldProject, $body);
             $result = $projectAccess->updateProject($newProject);
 
             echo json_encode($result);
