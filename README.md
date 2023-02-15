@@ -79,12 +79,12 @@ If you want to use an API platform like Postman or Insomnia, below are some of t
         "type": "task"
     }
 
-### PUT task (updating a task)
-`http://127.0.0.1:8080/src/controllers/taskControllers.php` with example request body:
+### POST task (updating a task)
+`http://127.0.0.1:8080/src/controllers/taskControllers.php/task-id-2` with example request body:
 
     {
-            "id": "task-id-2",
-    				"story_points": 1
+            
+    	"story_points": 1
     
     }
 
