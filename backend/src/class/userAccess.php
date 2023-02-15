@@ -126,27 +126,6 @@ class UserAccess {
 
         return $statement->rowCount() > 0;
     }
-
-
-    public function createUsersFromImport(string $csvFilePath) {
-        $file = fopen($csvFilePath, "r");
-        while (($row = fgetcsv($file)) !== FALSE) {
-            $sqlQuery = "INSERT INTO " . $this->db_table .
-                        " (id, first_name, last_name, password, role, email) " . 
-                        " values (:id, :first_name, :last_name, :password, :role, :email)";
-            
-            $statement = $this->conn->prepare($sqlQuery);
-
-            $statement->bind_param(":id", $row[1]);
-            $statement->bind_param(":first_name", $row[2]);
-            $statement->bind_param(":last_name", $row[3]);
-            $statement->bind_param(":password", $row[4]);
-            $statement->bind_param(":role", $row[5]);
-            $statement->bind_param(":email", $row[6]);
-            
-            $statement->execute();
-        }
-    }
 }
 
 ?>
