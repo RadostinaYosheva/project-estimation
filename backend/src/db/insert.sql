@@ -1,117 +1,49 @@
-insert into Project 
-(
-    id, 
-    title, 
-    deadline,
-    status
-) values (
-    "1", 
-    "Test Project 1", 
-    NOW(),
-    'New'
-);
+INSERT INTO User (id, first_name, last_name, password, role, email)
+VALUES ("@tosho.y", "Tosho", "Yordanov", "password", 'Scrum Master', "tosho.y@mail.com");
 
-insert into Project 
-(
-    id, 
-    title, 
-    deadline,
-    status
-) values (
-    "2", 
-    "Test Project 2", 
-    NOW(),
-    'In Progress'
-);
+INSERT INTO User (id, first_name, last_name, password, role, email)
+VALUES ("@gosho.i", "Gosho", "Ivanov", "abcd1234", 'Admin', "gosho.i@mail.com");
 
-insert into Task
-(
-    id,
-    title,
-    project,
-    type
-) values (
-    "123",
-    "Task 1",
-    "1",
-    'Discovery'
-);
+INSERT INTO User (id, first_name, last_name, password, role, email)
+VALUES ("@pesho.p", "Pesho", "Petrov", "abcd12345", 'Developer', "pesho.p@mail.com");
 
-insert into User
-(
-    id,
-    first_name,
-    last_name,
-    password,
-    role,
-    email
-) values (
-    "@gosho.i",
-    "Gosho",
-    "Ivanov",
-    "abcd1234",
-    'Admin',
-    "gosho.i@mail.com"
-);
+INSERT INTO User (id, first_name, last_name, password, role, email)
+VALUES ("@maria.i", "Maria", "Ivanova", "passMaria", 'Product Owner', "maria.i@mail.com");
 
-insert into User
-(
-    id,
-    first_name,
-    last_name,
-    password,
-    role,
-    email
-) values (
-    "@pesho.p",
-    "Pesho",
-    "Petrov",
-    "abcd12345",
-    'Developer',
-    "pesho.p@mail.com"
-);
+INSERT INTO User (id, first_name, last_name, password, role, email)
+VALUES ("@yana.v", "Yana", "Vasileva", "passYana", 'Developer', "yana.v@mail.com");
 
-insert into User
-(
-    id,
-    first_name,
-    last_name,
-    password,
-    role,
-    email
-) values (
-    "@tosho.y",
-    "Tosho",
-    "Yordanov",
-    "password",
-    'Scrum Master',
-    "tosho.y@mail.com"
-);
+INSERT INTO User (id, first_name, last_name, password, role, email)
+VALUES ("@viktor.g", "Viktor", "Georgiev", "passViktor", 'Developer', "viktor.g@mail.com");
 
-insert into Task
-(
-    id,
-    title,
-    project,
-    type,
-    assignee
-) values (
-    "321",
-    "Task 2",
-    "1",
-    "Task",
-    "@tosho.y"
-);
+INSERT INTO Project (id, title, status, owner, deadline)
+VALUES ("lightbulb", "Lightbulb", 'New', "@maria.i", "2024-01-01 00:00:01");
 
-insert into Task
-(
-    id,
-    title,
-    project,
-    type
-) values (
-    "456",
-    "Task 3",
-    "2",
-    'Task'
-);
+INSERT INTO Project (id, title, status, owner, deadline)
+VALUES ("oceanwave", "Ocean Wave", 'In Progress', "@maria.i", "2023-03-21 23:59:59");
+
+INSERT INTO Project (id, title, status, owner, deadline)
+VALUES ("dolomites", "Dolomites", 'Done', "@maria.i", "2022-11-15 18:30:00");
+
+INSERT INTO Task (id, title, project, assignee, description, type, story_points)
+VALUES ("dolomites-1", "Setup environment", "dolomites", "@pesho.p", "Setup a new testing environment. Definition of Done: There is a new environment enabling the developers to test their changes.", 'Task', 5);
+
+INSERT INTO Task (id, title, project, assignee, description, type, story_points)
+VALUES ("dolomites-2", "Client update", "dolomites", "@tosho.y", "Inform the clients what we have been up to the last sprint. Definition of Done: The clients have a clear understanding of our work from the last two weeks.", 'Task', 1);
+
+INSERT INTO Task (id, title, project, assignee, description, type, story_points)
+VALUES ("lightbulb-1", "Research teambuilding", "lightbulb", "@viktor.g", "We need to find some places that are proper for a teambuilding for 5 people. Definition of Done: A clear proposal with minimal budget.", 'Discovery', 3);
+
+INSERT INTO Task (id, title, project, assignee, description, type, story_points)
+VALUES ("lightbulb-2", "Research tasks", "lightbulb", "@yana.v", "Figure out what tasks need to be implemented. Definition of Done: The assignee creates atomic tasks that distribute the workload in small pieces. The team should be able to work on at least two task simultaneously.", 'Discovery', 8);
+
+INSERT INTO Task (id, title, project, assignee, description, type, story_points)
+VALUES ("oceanwave-1", "Research tasks", "oceanwave", "@yana.v", "Figure out what tasks need to be implemented. Definition of Done: The assignee creates atomic tasks that distribute the workload in small pieces. The team should be able to work on at least two task simultaneously.", 'Discovery', 8);
+
+INSERT INTO Task (id, title, project, assignee, description, type, story_points)
+VALUES ("oceanwave-2", "Setup environment", "oceanwave", "@pesho.p", "Setup a new testing environment. Definition of Done: There is a new environment enabling the developers to test their changes.", 'Task', 5);
+
+INSERT INTO Task (id, title, project, assignee, description, type, story_points)
+VALUES ("oceanwave-3", "Fix version of testing environment", "oceanwave", "@viktor.g", "The version of the environment is an old one and it should be changed. Definition of Done: The version is bumped and the environment is working properly.", 'Bug', 1);
+
+
